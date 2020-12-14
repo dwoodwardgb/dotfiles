@@ -25,3 +25,37 @@ alias y="yarn"
 alias m="make"
 alias fh="cat ~/.zsh_history | grep "
 alias gfpl="git fetch && git pull "
+
+lazy_load_nvm() {
+  unset -f node npm npx yarn pnpm
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+
+node() {
+  lazy_load_nvm
+  node $@
+}
+
+npm() {
+  lazy_load_nvm
+  npm $@
+}
+
+npx() {
+  lazy_load_nvm
+  npx $@
+}
+
+yarn() {
+  lazy_load_nvm
+  yarn $@
+}
+
+pnpm() {
+  lazy_load_nvm
+  pnpm $@
+}
+
+
